@@ -22,7 +22,13 @@ fn main() {
         //
         // Hint: You will need to convert your string literals into a String before you will be able
         // to compare them with `==`
-
+        if arg == "sum" {
+            sum();
+        } else if arg == "double" {
+            double();
+        } else {
+            count(arg);
+        }
 
         // 1b. Now try passing "sum", "double" and "bananas" to the program by adding your argument
         // after "cargo run".  For example "cargo run sum"
@@ -34,7 +40,9 @@ fn sum() {
     // 2. Use a "for loop" to iterate through integers from 7 to 23 *inclusive* using a range
     // and add them all together (increment the `sum` variable).  Hint: You should get 255
     // Run it with `cargo run sum`
-
+    for i in 7..=23 {
+        sum += i;
+    }
 
     println!("The sum is {}", sum);
 }
@@ -46,8 +54,14 @@ fn double() {
     // by 2) before it is larger than 500.  Increment `count` each time through the loop. Run it
     // with `cargo run double`  Hint: The answer is 9 times.
 
-
-    println!("You can double x {} times before it is larger than 500", count);
+    while x < 500 {
+        count += 1;
+        x *= 2;
+    }
+    println!(
+        "You can double x {} times before it is larger than 500",
+        count
+    );
 }
 
 fn count(arg: String) {
@@ -56,6 +70,14 @@ fn count(arg: String) {
     //
     // print!("{} ", arg); // Execute this line 8 times, and then break. `print!` doesn't add a newline.
 
+    let mut index = 1;
+    loop {
+        if index > 8 {
+            break;
+        }
 
+        print!("{} ", arg);
+        index += 1;
+    }
     println!(); // This will output just a newline at the end for cleanliness.
 }
